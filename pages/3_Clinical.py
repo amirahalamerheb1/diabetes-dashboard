@@ -5,6 +5,8 @@ import plotly.graph_objects as go
 import numpy as np
 
 df = pd.read_csv("diabetes.csv")
+for col in ["Glucose", "BloodPressure", "SkinThickness", "Insulin", "BMI"]:
+    df[col] = df[col].replace(0, df[col].median())
 df_clean = df[(df['Glucose'] > 0) & (df['BloodPressure'] > 0) & (df['BMI'] > 0) & (df['Insulin'] > 0)]
 
 st.markdown('<p class="section-title">Clinical Analysis</p>', unsafe_allow_html=True)
