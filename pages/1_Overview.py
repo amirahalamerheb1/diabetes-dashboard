@@ -4,6 +4,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 df = pd.read_csv("diabetes.csv")
+for col in ["Glucose", "BloodPressure", "SkinThickness", "Insulin", "BMI"]:
+    df[col] = df[col].replace(0, df[col].median())
 
 st.markdown('<p class="hero-title">Diabetes Analytics Dashboard</p>', unsafe_allow_html=True)
 st.markdown('<p class="hero-sub">A clinical intelligence tool for understanding diabetes burden, patient risk profiles, and predictive diagnostics.</p>', unsafe_allow_html=True)
@@ -53,7 +55,7 @@ with col_left:
         labels=["Non-Diabetic", "Diabetic"],
         values=[non_diabetic, diabetic],
         hole=0.6,
-        marker_colors=["#4A90D9", "#E05C5C"],
+        marker_colors=["#C4B5FD", "#7C3AED"],
         textinfo='percent+label',
         textfont_size=13
     )])
@@ -73,14 +75,14 @@ with col_right:
     fig_hist.add_trace(go.Histogram(
         x=df[df['Outcome'] == 0]['Glucose'],
         name='Non-Diabetic',
-        marker_color='#4A90D9',
+        marker_color='#C4B5FD',
         opacity=0.7,
         nbinsx=30
     ))
     fig_hist.add_trace(go.Histogram(
         x=df[df['Outcome'] == 1]['Glucose'],
         name='Diabetic',
-        marker_color='#E05C5C',
+        marker_color='#7C3AED',
         opacity=0.7,
         nbinsx=30
     ))
