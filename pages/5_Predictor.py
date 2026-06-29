@@ -8,6 +8,8 @@ from sklearn.metrics import accuracy_score, classification_report, confusion_mat
 from sklearn.preprocessing import StandardScaler
 
 df = pd.read_csv("diabetes.csv")
+for col in ["Glucose", "BloodPressure", "SkinThickness", "Insulin", "BMI"]:
+    df[col] = df[col].replace(0, df[col].median())
 
 st.markdown('<p class="section-title">ML Diabetes Risk Predictor</p>', unsafe_allow_html=True)
 st.markdown('<p class="section-sub">Random Forest classifier trained on clinical measurements to predict diabetes risk.</p>', unsafe_allow_html=True)
@@ -85,14 +87,14 @@ with tab1:
             title={'text': "Diabetes Risk Score (%)"},
             gauge={
                 'axis': {'range': [0, 100]},
-                'bar': {'color': "#7C3AED" if risk_pct > 50 else "#C4B5FD"},
+                'bar': {'color': "#E05C5C" if risk_pct > 50 else "#4A90D9"},
                 'steps': [
-                    {'range': [0, 30], 'color': '#EDE9FE'},
-                    {'range': [30, 60], 'color': '#DDD6FE'},
-                    {'range': [60, 100], 'color': '#C4B5FD'}
+                    {'range': [0, 30], 'color': '#D6F5E3'},
+                    {'range': [30, 60], 'color': '#FFF3CD'},
+                    {'range': [60, 100], 'color': '#4A90D9'}
                 ],
                 'threshold': {
-                    'line': {'color': "#3B1F6B", 'width': 3},
+                    'line': {'color': "#1B2B4B", 'width': 3},
                     'thickness': 0.75,
                     'value': risk_pct
                 }
@@ -118,7 +120,7 @@ with tab2:
             x=fi_df['Importance'],
             y=fi_df['Feature'],
             orientation='h',
-            marker_color='#C4B5FD'
+            marker_color='#4A90D9'
         ))
         fig_fi.update_layout(
             height=320,
@@ -138,7 +140,7 @@ with tab2:
             z=cm,
             x=['Predicted: No', 'Predicted: Yes'],
             y=['Actual: No', 'Actual: Yes'],
-            colorscale=[[0, '#EEF2F8'], [1, '#3B1F6B']],
+            colorscale=[[0, '#EEF2F8'], [1, '#1B2B4B']],
             text=cm,
             texttemplate='%{text}',
             textfont=dict(size=18, color='white'),
