@@ -49,10 +49,10 @@ fig_map = px.choropleth(
     locationmode='country names',
     color='Prevalence',
     color_continuous_scale=[
-        [0, '#D6E8FF'],
-        [0.3, '#4A90D9'],
-        [0.6, '#C0392B'],
-        [1, '#7B0000']
+        [0, '#EDE9FE'],
+        [0.3, '#C4B5FD'],
+        [0.6, '#7C3AED'],
+        [1, '#3B1F6B']
     ],
     range_color=[0, 20],
     labels={'Prevalence': 'Prevalence (%)'},
