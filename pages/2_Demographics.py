@@ -5,6 +5,8 @@ import plotly.graph_objects as go
 import numpy as np
 
 df = pd.read_csv("diabetes.csv")
+for col in ["Glucose", "BloodPressure", "SkinThickness", "Insulin", "BMI"]:
+    df[col] = df[col].replace(0, df[col].median())
 
 st.markdown('<p class="section-title">Demographics & Risk Profiles</p>', unsafe_allow_html=True)
 st.markdown('<p class="section-sub">Exploring how age, pregnancies, and lifestyle factors relate to diabetes risk.</p>', unsafe_allow_html=True)
