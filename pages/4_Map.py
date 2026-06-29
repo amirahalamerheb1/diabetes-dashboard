@@ -50,7 +50,7 @@ fig_map = px.choropleth(
     color='Prevalence',
     color_continuous_scale=[
         [0, '#D6E8FF'],
-        [0.3, '#C4B5FD'],
+        [0.3, '#4A90D9'],
         [0.6, '#C0392B'],
         [1, '#7B0000']
     ],
