@@ -85,14 +85,14 @@ with tab1:
             title={'text': "Diabetes Risk Score (%)"},
             gauge={
                 'axis': {'range': [0, 100]},
-                'bar': {'color': "#E05C5C" if risk_pct > 50 else "#4A90D9"},
+                'bar': {'color': "#7C3AED" if risk_pct > 50 else "#C4B5FD"},
                 'steps': [
-                    {'range': [0, 30], 'color': '#D6F5E3'},
-                    {'range': [30, 60], 'color': '#FFF3CD'},
-                    {'range': [60, 100], 'color': '#FFD6D6'}
+                    {'range': [0, 30], 'color': '#EDE9FE'},
+                    {'range': [30, 60], 'color': '#DDD6FE'},
+                    {'range': [60, 100], 'color': '#C4B5FD'}
                 ],
                 'threshold': {
-                    'line': {'color': "#1B2B4B", 'width': 3},
+                    'line': {'color': "#3B1F6B", 'width': 3},
                     'thickness': 0.75,
                     'value': risk_pct
                 }
@@ -118,7 +118,7 @@ with tab2:
             x=fi_df['Importance'],
             y=fi_df['Feature'],
             orientation='h',
-            marker_color='#4A90D9'
+            marker_color='#C4B5FD'
         ))
         fig_fi.update_layout(
             height=320,
@@ -138,7 +138,7 @@ with tab2:
             z=cm,
             x=['Predicted: No', 'Predicted: Yes'],
             y=['Actual: No', 'Actual: Yes'],
-            colorscale=[[0, '#EEF2F8'], [1, '#1B2B4B']],
+            colorscale=[[0, '#EEF2F8'], [1, '#3B1F6B']],
             text=cm,
             texttemplate='%{text}',
             textfont=dict(size=18, color='white'),
