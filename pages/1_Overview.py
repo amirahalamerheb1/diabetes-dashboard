@@ -55,7 +55,7 @@ with col_left:
         labels=["Non-Diabetic", "Diabetic"],
         values=[non_diabetic, diabetic],
         hole=0.6,
-        marker_colors=["#C4B5FD", "#7C3AED"],
+        marker_colors=["#4A90D9", "#E05C5C"],
         textinfo='percent+label',
         textfont_size=13
     )])
@@ -75,14 +75,14 @@ with col_right:
     fig_hist.add_trace(go.Histogram(
         x=df[df['Outcome'] == 0]['Glucose'],
         name='Non-Diabetic',
-        marker_color='#C4B5FD',
+        marker_color='#4A90D9',
         opacity=0.7,
         nbinsx=30
     ))
     fig_hist.add_trace(go.Histogram(
         x=df[df['Outcome'] == 1]['Glucose'],
         name='Diabetic',
-        marker_color='#7C3AED',
+        marker_color='#E05C5C',
         opacity=0.7,
         nbinsx=30
     ))
